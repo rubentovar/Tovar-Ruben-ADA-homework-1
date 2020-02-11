@@ -1,0 +1,113 @@
+---
+title: "Tovar-Ruben-ADA-Homework-1"
+author: "Ruben Tovar"
+date: "2/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### install tidyverse
+
+###CHALLLANGE 1
+
+vectorquote<-c("There is grandeur in this view of life, with its several powers, having been originally breathed by the Creator into a few forms or into one; and that, whilst this planet has gone circling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being evolved.")
+
+split_quote<-str_split(vectorquote," ")
+
+splitquote_unlist<-unlist(split_quote)
+
+###summary(splitquote_unlist)
+##Length     Class      Mode 
+       60 character character 
+
+splitquote_realpha<-splitquote_unlist[seq(from=1, to=60, by=4)]
+
+###OUTPUT:
+[1] "There"  "this"   "with"   "having" "by"     "a"      "into"   "whilst" "gone"  
+[10] "to"     "of"     "simple" "forms"  "most"   "and"
+
+sort(splitquote_realpha, decreasing=TRUE)
+
+###OUTPUT:
+1] "with"   "whilst" "to"     "this"   "There"  "simple" "of"     "most"   "into"  
+[10] "having" "gone"   "forms"  "by"     "and"    "a"
+
+
+
+###CHALLENGE 2
+
+## construct a matrix
+m1 <- matrix(data = 1:59, nrow = 8, ncol = 10, byrow = FALSE)
+
+## Extract row 5, column 2
+m1ex <- m1[5,2]
+
+## Extract row 5 to 7
+m1ex2<- m1[5:7]
+
+## Extract row 3, col 4 to row 6, col 9
+m2 <- m1[3:6, 4:9]
+
+class(m2)
+[1] "matrix"
+mode(m2)
+[1] "numeric"
+
+
+
+###CHALLENGE 3
+
+a <- array(data = 400:1, dim = c(5,5,4,4))
+
+a[1, 1, 1, 2]
+[1] 300
+
+a[2, 3, 2, ]
+[1] 364 264 164  64
+
+a[1:5, 1:5, 3, 3]
+    [,1] [,2] [,3] [,4] [,5]
+[1,]  150  145  140  135  130
+[2,]  149  144  139  134  129
+[3,]  148  143  138  133  128
+[4,]  147  142  137  132  127
+[5,]  146  141  136  131  126
+
+
+###CHALLANGE 4
+
+#Superfamily
+
+Superfamily<-c(Lorisiformes="Lorisidae","Galagidae")
+Lemuroidea=c("Cheirogaleidae","Lepilemuridae", "Indriidae", "Lemuridae","Daubentoniidae")
+Tarsioidea= c("Tarsiidae")
+Ceboidea= c("Cebidae", "Atelidae", "Pitheciidae")
+Hominoidea= c("Hylobatidae", "Hominidae")
+Cercopithecoidea= c("Cercopithecidae")
+
+
+#Parvorder
+
+Parvorder<-c(Platyrrhini="Ceboidea",
+Catarrhini=c("Hominoidea","Cercopithecoidea"))
+
+##Inferaorder
+
+Inferaorder<- c(Lorisiformes="Lorisoidea",
+Lemuriformes="Lemuroidea",
+Tarsiiformes="Tarsioidea",
+Simiiformes=c("Platyrrhini","Catarrhini"))
+
+##Superorder
+
+Superorder<-c(Strepsirhini=c("Lorisiformes","Lemuriformes"),
+Haplorhini= c("Tarsiiformes","Simiiformes"))
+
+##order
+
+Order<-c(Primates=c("Strepsirhini","Haplorhini"))
+
+l<-list(Order, Superorder, Inferaorder, Parvorder,Superfamily)
